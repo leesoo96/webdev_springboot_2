@@ -6,6 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UserEntity {
+
 	private int userPk;
 	private String provider;
 	private String uid;

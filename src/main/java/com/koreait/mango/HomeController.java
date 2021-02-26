@@ -27,7 +27,7 @@ public class HomeController {
 		
 	@GetMapping("/home")
 	@Secured({"ROLE_ADMIN", "ROLE_USER"})
-	public void home(@CurrentUser UserPrincipal userPrincipal) {
+	public void home(@CurrentUser UserPrincipal userPrincipal) { // 자동으로 UserDetail로 형변환을 한다 
 		System.out.println("userPk : " + userPrincipal.getUserPk());
 		service.home();
 	}

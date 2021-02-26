@@ -14,8 +14,8 @@
 		<c:remove var="SPRING_SECURITY_LAST_EXCEPTION" scope="session" />
 	</c:if>
 	<div>
-		<form action="/login" method="post">
-			<div>
+		<form action="/login" method="post"> <!-- <- 컨트롤러에 login을 따로 만들필요없이 시큐리티가 인식을 해서 로그인처리를 한다 -->
+			<div>									<!-- username 을 id 로 인식 -->
 				<input type="text" name="username" placeholder="id를 입력해주세요."
 					value="microform">
 			</div>
