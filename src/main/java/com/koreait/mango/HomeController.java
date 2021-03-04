@@ -4,6 +4,7 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.koreait.mango.model.UserEntity;
@@ -18,26 +19,28 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class HomeController {
 	
-	final HomeService service;
+final HomeService service;
 	
 	@GetMapping("/")
 	public String home() {
-		return "home";
+		return "index";
 	}
 		
 	@GetMapping("/home")
 	@Secured({"ROLE_ADMIN", "ROLE_USER"})
-	public void home(@CurrentUser UserPrincipal userPrincipal) { // 자동으로 UserDetail로 형변환을 한다 
-		System.out.println("userPk : " + userPrincipal.getUserPk());
+	public void home2() {		
 		service.home();
 	}
 	
 	@GetMapping("/denied")
 	public void denied() {}
-	
+
 	@GetMapping("/login")
-	public void login() {}
-	
+	public void login(@ModelAttribute("userEntity") UserEntity userEntity) {
+		userEntity.setUid("admin");
+		userEntity.setUpw("1212");
+	}
+
 	@GetMapping("/join")
 	public void join() {}
 	
