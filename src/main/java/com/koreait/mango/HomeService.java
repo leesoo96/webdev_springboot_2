@@ -22,10 +22,8 @@ public class HomeService {
 	@Autowired
     private IAuthenticationFacade authenticationFacade;
 	
-//	폼로그인 
-	public void home() {
-		Authentication authentication = authenticationFacade.getAuthentication();
-		UserPrincipal user = (UserPrincipal)authentication.getPrincipal();  // 항상 권한을 검사한다 
+	public void home() {		
+		UserPrincipal user = authenticationFacade.getUserPrincipal();
 		System.out.println("userPk(2) : " + user.getUserPk());
 	}
 	
