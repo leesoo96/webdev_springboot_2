@@ -27,7 +27,7 @@
 			<h1>메뉴</h1>
 			<button th:onclick="|clkAddMenuInfo()|">메뉴 추가</button>
 			<form id="menuInfoFrm" th:action="@{/admin/regMenuInfo}" method="post">
-				<input type="hidden1" name="restPk" th:value="${data.entity.restPk}">
+				<input type="hidden" name="restPk" th:value="${data.entity.restPk}">
 				<div>
 					<label>메뉴명 : <input type="text" name="menuNm" required></label>
 					<label>금액 : <input type="number" name="menuPrice" required></label>
@@ -57,11 +57,12 @@
 				const marker = new kakao.maps.Marker({
 				    position: latLng
 				})
-				
+				// marker를 지우고싶다면 전역으로 선언해야한다(지도를 수동으로 옮겨 확인할 경우) 
 				marker.setMap(map)
 			}
 			/*<![CDATA[*/
-				initMap(/*[[${data.entity.lat}]]*/, /*[[${data.entity.lng}]]*/)    
-			/*]]>*/		</script>
+				initMap([[${data.entity.lat}]], [[${data.entity.lng}]])    
+			/*]]>*/		
+		</script>
 	</div>
 </html>
